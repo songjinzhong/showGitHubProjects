@@ -1,12 +1,18 @@
 (function($){
-	var showProjects = function(){
+	var showProjects = function(option){
 		var projects = this;
+
+		// defaultSetting
+		if(!option.name){
+			projects.html('<div><h3>参数错误</h3><p>请设置 GitHub 用户名</p></div>');
+			return;
+		}
 		var template = '<div class="p-item">'+
 				'<div class="p-header"><a href="[repo.html_url]"><h3>[repo.name]</h3></a></div>'+
 				'<div class="p-body"><p>[repo.description]</p></div>'+
 				'<div class="p-footer"><span>L：[repo.language]</span><span>S：[repo.stargazers_count]</span><span>F：[repo.forks_count]</span></div>'+
 			'</div>';
-		projects.length > 0 && $.get("https://api.github.com/users/songjinzhong/repos?type=owner", function(data){
+		projects.length > 0 && $.get("https://api.github.com/users/"+ option.name +"/repos?type=owner", function(data){
 			if(data){
 				projects.html("");
 				data = data.filter(function(a){
