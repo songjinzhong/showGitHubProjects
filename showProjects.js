@@ -2,11 +2,16 @@
 	var showProjects = function(option){
 		var projects = this;
 
-		// defaultSetting
+		// no github name
 		if(!option.name){
 			projects.html('<div><h3>参数错误</h3><p>请设置 GitHub 用户名</p></div>');
 			return;
 		}
+
+		// defaultSetting
+
+		option.maxNum = option.maxNum || 0;
+
 		var template = '<div class="p-item">'+
 				'<div class="p-header"><a href="[repo.html_url]"><h3>[repo.name]</h3></a></div>'+
 				'<div class="p-body"><p>[repo.description]</p></div>'+
@@ -22,6 +27,9 @@
 					return b.stargazers_count - a.stargazers_count|| b.forks_count - a.forks_count;
 				})
 				var item = "";
+				if(option.maxNum > 0 && option.maxNum < data.length){
+					data = data.slice(0,option.maxNum);
+				}
 				data.forEach(function(repo){
 					repo.language = repo.language || 'null';
 					item = template.replace(/\[(.*?)\]/g, function(){
