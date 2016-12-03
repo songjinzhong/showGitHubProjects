@@ -12,18 +12,19 @@
 
 		option.maxNum = option.maxNum || 0;
 		option.loading = option.loading || '<h3>加载中...</h3>';
+		var name = (option.filter && option.filter.name) || [],
+			id = (option.filter && option.filter.id) || [];
 
 		var template = '<div class="p-item">'+
 				'<div class="p-header"><a href="[repo.html_url]"><h3>[repo.name]</h3></a></div>'+
 				'<div class="p-body"><p>[repo.description]</p></div>'+
 				'<div class="p-footer"><span>L：[repo.language]</span><span>S：[repo.stargazers_count]</span><span>F：[repo.forks_count]</span></div>'+
 			'</div>';
-		projects.length > 0 && projects.html(option.loading);
-		projects.length > 0 && $.get("https://api.github.com/users/"+ option.name +"/repos?type=owner", function(data){
+		projects.length > 0 && projects.html(option.loading) && $.get("https://api.github.com/users/"+ option.name +"/repos?type=owner", function(data){
 			if(data){
 				projects.html("");
 				data = data.filter(function(a){
-					return null != a.description && a.fork == false;
+					return null != a.description && a.fork == false && name.indexOf(a.name) == -1 && id.indexOf(a.id) == -1;
 				});
 				data = data.sort(function(a, b){
 					return b.stargazers_count - a.stargazers_count|| b.forks_count - a.forks_count;
