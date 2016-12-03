@@ -11,12 +11,14 @@
 		// defaultSetting
 
 		option.maxNum = option.maxNum || 0;
+		option.loading = option.loading || '<h3>加载中...</h3>';
 
 		var template = '<div class="p-item">'+
 				'<div class="p-header"><a href="[repo.html_url]"><h3>[repo.name]</h3></a></div>'+
 				'<div class="p-body"><p>[repo.description]</p></div>'+
 				'<div class="p-footer"><span>L：[repo.language]</span><span>S：[repo.stargazers_count]</span><span>F：[repo.forks_count]</span></div>'+
 			'</div>';
+		projects.length > 0 && projects.html(option.loading);
 		projects.length > 0 && $.get("https://api.github.com/users/"+ option.name +"/repos?type=owner", function(data){
 			if(data){
 				projects.html("");

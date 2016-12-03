@@ -9,16 +9,15 @@ A JavaScript lib to show your GitHub projects on HTML page.
 
 ```javascript
 //html
-<div class="projects">
-	<h3>加载中...</h3> // set waiting here
-</div>
+<div class="projects"></div>
 <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="showProjects.js"></script>
 
 //js
 $('.projects').showProjects({
 	name : 'songjinzhong', //your github url name
-	maxNum : 12 // max Num you want show your projects
+	maxNum : 12, // max Num you want show your projects
+	loading : '<h3>加载中...</h3>' //loading informtion
 });
 ```
 
