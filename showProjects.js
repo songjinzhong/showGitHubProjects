@@ -3,7 +3,7 @@
 		var projects = this;
 
 		// no github name
-		if(!option.name){
+		if(!option || !option.name){
 			projects.html('<div><h3>参数错误</h3><p>请设置 GitHub 用户名</p></div>');
 			return;
 		}

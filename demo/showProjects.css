@@ -51,4 +51,8 @@ a:hover{
 }
 .projects .p-item .p-footer span{
 	padding: 0 10px;
+	& i{
+		font-style: normal;
+		font-size: 10px
+	}
 }
