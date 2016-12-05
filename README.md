@@ -28,3 +28,7 @@ $('.projects').showProjects({
 ## 注意
 
 这个 Demo 的布局用到了 flex 布局，所以如果在一些比较旧的浏览器上面，可能显示回出现问题。
+
+## 应用
+
+基于此，我写了[一篇文章](http://yuren.space/blog/2016/12/04/show-you-projects/)进行介绍，并把此项目用到了我博客中[项目页面](http://yuren.space/projects)。
