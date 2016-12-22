@@ -21,13 +21,21 @@ $('.projects').showProjects({
 	filter : { // filter for your projects, can be id or name
 		id : [66267751],
 		name : ['7studying.com']
-	}
+	},
+  per_page: 100, // 取决于你项目数，必须大于你的项目数
+  fork: false // 是否显示 fork 项目，false 表示不显示
 });
 ```
 
 ## 注意
 
 这个 Demo 的布局用到了 flex 布局，所以如果在一些比较旧的浏览器上面，可能显示回出现问题。
+
+## 更新
+
+2016-12-22：发现 github 对于 https://api.github.com/users/songjinzhong/repos 的数据有限制，每页默认显示 30，默认获取第一页，所以如果想要获得所有项目，必须把 `per_page` 设置大于你的项目数，该参数表示每页显示的项目数量。
+
+2016-12-22：添加是否显示 fork 项目配置
 
 ## 应用
 
